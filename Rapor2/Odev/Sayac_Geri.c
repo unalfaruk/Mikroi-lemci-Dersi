@@ -15,7 +15,7 @@ GPIO_PORTD_AHB_DATA = 0;
 // Değişkenleri belirliyoruz
 //c: basamak sayacı
 //k: öteleme sonucu elde edilen binary sayı
-unsigned int c,k,bcd=0;
+unsigned int c,k,bcd=15;
 // Dizi açtık, basamakları tutmak için.
 int status[4];
 
@@ -31,7 +31,7 @@ void main() {
   
   do {
     if (Button(&GPIO_PORTE_AHB_DATA, 0, 1, 1))   // PE0 pininden giriş var mı kontrol edelim
-      bcd = bcd+1;                                //Sayacı artıralım
+      bcd = bcd-1;                                //Sayacı artıralım
       for(c=3;c>=0;c--){
         k = bcd>>c;                               //Öteleme
         if(k & 1){                               //Basamakları kontrol ediyoruz bit seviyesinde çarpma ile
@@ -42,6 +42,6 @@ void main() {
       }
       led();                                  //Led fonksiyonunu çağırarak portları ayarlıyoruz.
       
-  } while(bcd<=15);                           //Döngü koşulu.
+  } while(bcd>=0);                           //Döngü koşulu.
 
 }
