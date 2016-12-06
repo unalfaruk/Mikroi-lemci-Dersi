@@ -1,6 +1,5 @@
 //Buton ve LED pinlerini belirtelim.
 const int  buttonPin = 2;
-const int ledPin = 13;
 
 // Algoritma için değişkenler belirtelim
 int buttonPushCounter = 0;   // Sayaç
@@ -16,7 +15,10 @@ void setup() {
   
   //Çıkış ve giriş pinlerini belirtelim.
   pinMode(buttonPin, INPUT);
-  pinMode(ledPin, OUTPUT);
+  pinMode(13, OUTPUT);
+  pinMode(12, OUTPUT);
+  pinMode(11, OUTPUT);
+  pinMode(10, OUTPUT);
 }
 
 void ledleriYak() {
