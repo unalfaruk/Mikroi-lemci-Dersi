@@ -62,14 +62,19 @@ void setup() {
 void loop() {
   GelenDeger = analogRead(A0);               //A0 pininden gelen değeri alalım
   GelenDegerGerilim=GelenDeger*(5000/1023); //0-1023 arası değer gelecektir. 0 = 0V / 1023=5V temsil eder.
-                                            // bu değeri mV cinsinden alıyoruz. 
-  
+                                            // bu değeri mV cinsinden alıyoruz.  
   Sicaklik=GelenDegerGerilim/10,0;          //Sensör 1 C için 10mV değeri verdiği için, gerilimi 10 a bölerek
                                               //sıcaklık değerini hesaplıyoruz
   lcd.setCursor(0,1); //0 sütun, 1 satır numarası. (saymaya 0 dan başladığımız için aslında 2.satırı temsil eder.)
+  
   lcd.print(Sicaklik); //Sicaklik dğişkeninin değerini ekrana yazdıralım.
-  lcd.print(" *C"); //Sonun dereceyi ifade etmesi için bu kısmı ekledik.
+  //Sıcaklığa göre LCD ye çıktı verelim.
+  if(Sicaklik>38){
+    lcd.print(" *C, Sogut");
+  }else{
+    lcd.print(" *C, Isit ");
+  }
+ 
   delay(1000); //1 saniye aralıklarla sıcaklık değişimini kontrol edelim.
-                                  
 }
 
