@@ -54,6 +54,7 @@ void setup() {
   lcd.print("Hos geldiniz.");
   //2 saniye bekletelim, hoş geldiniz yazısından sonra
   delay(2000);
+  //Ekranı temizleyelim ve daha sonra Sicaklik yazdiralim.
   lcd.clear();
   lcd.print("Sicaklik:");
 }
@@ -66,9 +67,9 @@ void loop() {
   Sicaklik=GelenDegerGerilim/10,0;          //Sensör 1 C için 10mV değeri verdiği için, gerilimi 10 a bölerek
                                               //sıcaklık değerini hesaplıyoruz
   lcd.setCursor(0,1); //0 sütun, 1 satır numarası. (saymaya 0 dan başladığımız için aslında 2.satırı temsil eder.)
-  lcd.print(Sicaklik);
-  lcd.print(" *C");
-  delay(1000);
+  lcd.print(Sicaklik); //Sicaklik dğişkeninin değerini ekrana yazdıralım.
+  lcd.print(" *C"); //Sonun dereceyi ifade etmesi için bu kısmı ekledik.
+  delay(1000); //1 saniye aralıklarla sıcaklık değişimini kontrol edelim.
                                   
 }
 
